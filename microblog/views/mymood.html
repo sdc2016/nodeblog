@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>
+			<%=title %>
+		</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+		<link rel="stylesheet" href="/stylesheets/bootstrap-responsive.css" />
+
+	</head>
+
+	<body>
+		<div class="navbar navbar-fixed-top ">
+			<div class="navbar-inner">
+				<div class="container">
+					<span>Welcome to you:</span>
+					<a href="/personal"> <%= user %></a> 
+					<a href="/home" class="ml10">首页</a>
+					<a href="/logout" class="ml10 fr">我要注销</a>
+					<a href="/logout" class="ml10 fr">个人说说</a>
+				</div>
+			</div> 
+		</div>
+		<div id="container" class="container mt50">
+				<% var s=0;	
+				for( var i in datalist){
+					if(s%3==0){%>
+						<div class="row">
+				<%	} %>
+					<form method="post" action="mymood">
+						<div class="span4">
+							<input type="hidden" name="moodid" value="<%= datalist[i].id %> "/>
+							<input type="hidden" name="moodname" value="<%= datalist[i].name %> "/>
+							<input type="hidden" name="moodtell" value="<%= datalist[i].tell %> "/>
+							<h2><%= datalist[i].name %> 说</h2>
+							<p><small><%= datalist[i].date %></small></p>
+							<p><%= datalist[i].tell %></p>
+							<div><input class="fr" type="submit" value="删除" /></div>
+						</div>
+					</form>
+				<% if(s%3==2){%>
+					</div>
+				<%}
+					if((s == datalist.length-1)&&(s%3!=2)){%>
+						</div>
+					<%}	
+					++s;
+					} %>
+			
+			<hr />
+			<footer>
+				<p><a href="http://www.byvoid.com/" target="_blank">BYVoid</a> 2012</p>
+			</footer>
+		</div>
+	</body>
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.js"></script>
+
+</html>

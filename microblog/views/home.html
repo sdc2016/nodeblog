@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>
+			<%=title %>
+		</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+		<link rel="stylesheet" href="/stylesheets/bootstrap-responsive.css" />
+
+	</head>
+
+	<body>
+		<div class="navbar navbar-fixed-top ">
+			<div class="navbar-inner">
+				<div class="container">
+					<span>Welcome to you:</span>
+					<a href="/personal"> <%= user %></a> 
+					<a href="/" class="ml10">首页</a>
+					<a href="/logout" class="ml10 fr">我要注销</a>
+					<a href="/mymood" class="ml10 fr">个人说说</a>
+				</div>
+			</div> 
+		</div>
+		<div id="container" class="container mt50">
+			<form method="post" action="home" class="well form-inline center" style="text-align:center;">
+				<input type="text" class="span8" name="tweetinput">
+				<button type="submit" class="btn btn-success"><i class="icon-comment icon-white"></i> 发言</button>
+			</form>
+				<% var s=0;	
+				for( var i in datalist){
+					if(s%3==0){%>
+						<div class="row">
+				<%	} %>
+						<div class="span4">
+							<h2><%= datalist[i].name %> 说</h2>
+							<p><small><%= datalist[i].date %></small></p>
+							<p><%= datalist[i].tell %></p>
+						</div>
+				
+				<% if(s%3==2){%>
+					</div>
+				<%}
+					if((s == datalist.length-1)&&(s%3!=2)){%>
+						</div>
+					<%}	
+					++s;
+					} %>
+			
+			<hr />
+			<footer>
+				<p><a href="http://www.byvoid.com/" target="_blank">BYVoid</a> 2012</p>
+			</footer>
+		</div>
+	</body>
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.js"></script>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+		<link rel="stylesheet" href="/stylesheets/bootstrap-responsive.css" />
+	</head>
+
+	<body>
+		<div class="navbar navbar-fixed-top ">
+			<div class="navbar-inner">
+				<div class="container">
+					<span>Welcome to you:</span>
+					<a href="/personal"> <%= user %></a> 
+					<a href="/" class="ml10">首页</a>
+					<a href="/logout" class="ml10 fr">我要注销</a>
+					
+				</div>
+			</div> 
+		</div>
+		<div class="container mt50">
+		<form action="/personal" method="post">
+			<fieldset>
+				<legend>用户密码修改</legend>
+				<div class="control-group">
+					<label class="control-label" for="oldpsd">旧密码</label>
+					<div class="controls">
+						<input type="text" class="input-xlarge" id="oldpwd" name="oldpwd">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="newpwd">输入新密码</label>
+					<div class="controls">
+						<input type="password" class="input-xlarge" id="newpwd" name="newpwd">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="newpwd2">再次输入新密码</label>
+					<div class="controls">
+						<input type="password" class="input-xlarge" id="newpwd2" name="newpwd2">
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary">修改</button>
+				</div>
+			</fieldset>
+		</form>
+		</div>
+	</body>
+	<script src="/javascripts/jquery.min.js"></script>
+	<script src="/javascripts/bootstrap.js"></script>
+
+</html>
